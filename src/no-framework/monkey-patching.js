@@ -24,14 +24,26 @@ const thumbWar = require('../thumb-war')
 const utils = require('../utils')
 
 // Your code:
+const getWinnerRef = utils.getWinner
+utils.getWinner = (player1, player2) => player1;
 // monkey patch
 
 const winner = thumbWar('Kent C. Dodds', 'Ken Wheeler')
 assert.strictEqual(winner, 'Kent C. Dodds')
 
 // Your code:
+utils.getWinner = getWinnerRef;
+const winner2 = thumbWar('a', 'b');
+console.log(winner2)
 // cleanup
 
 /**
  * Checkout master branch to see the answer.
+ */
+
+
+/**
+ * My conclusions:
+ * Monkey patching is the act of overriding the implementation of a function in order to test a process in a more deterministic way.
+ * It is important to cleanup the functions monkey patched in order to do not affect other test or have unexpected results. 
  */
