@@ -21,10 +21,15 @@ test('returns winner', () => {
   const originalGetWinner = utils.getWinner
   utils.getWinner = jest.fn((p1, p2) => p1)
 
-  const winner = thumbWar('Kent C. Dodds', 'Ken Wheeler')
-  expect(winner).toBe('Kent C. Dodds')
+  const mockArgs = ['Kent C. Dodds', 'Ken Wheeler']
+  const winner = thumbWar(...mockArgs)
+  expect(winner).toBe(mockArgs[0])
   // Your code:
-
+  // expect(utils.getWinner).toHaveBeenCalledTimes(2);
+  // expect(utils.getWinner).toHaveBeenNthCalledWith(1, ...mockArgs);
+  // expect(utils.getWinner).toHaveBeenNthCalledWith(2, ...mockArgs);
+  // console.log(utils.getWinner.mock.calls)
+  expect(utils.getWinner.mock.calls).toEqual([mockArgs, mockArgs])
   // cleanup
   utils.getWinner = originalGetWinner
 })

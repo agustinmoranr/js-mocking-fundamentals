@@ -12,6 +12,16 @@ const utils = require('../utils')
 
 // Your Code:
 
+function fn(implementation) {
+  const mockFunc = (...args) => {
+    mockFunc.mock.calls.push(args)
+    return implementation(...args)
+  }
+
+  mockFunc.mock = {calls:[]}
+  return mockFunc
+}
+
 const originalGetWinner = utils.getWinner
 utils.getWinner = fn((p1, p2) => p1)
 
@@ -27,4 +37,6 @@ utils.getWinner = originalGetWinner
 
 /**
  * Checkout master branch to see the answer.
+ * 
+ * No i see the value of jest.fn, because adds a several utilities and variables that helps the developer to test easier an implementation.
  */
