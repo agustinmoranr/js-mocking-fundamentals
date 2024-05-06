@@ -38,5 +38,5 @@ utils.getWinner = originalGetWinner
 /**
  * Checkout master branch to see the answer.
  * 
- * No i see the value of jest.fn, because adds a several utilities and variables that helps the developer to test easier an implementation.
+ * Now i see the value of jest.fn, because adds a several utilities and variables that helps the developer to test easier an implementation.
  */
